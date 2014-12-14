@@ -59,8 +59,8 @@ def refresh_menu_screen():
     label=title_font.render("Example Label", 1, (blue))
     screen.blit(label,(5, 15))
 
-    #make an example button
-    button.add_button('exit',exit_task,50,50,100,100)
+    button.__render__()
+
 
 
 	#play=pygame.image.load("play.tiff")
@@ -106,6 +106,10 @@ def main():
 size = width, height = 480, 320
 screen = pygame.display.set_mode(size)
 button = Button(screen)
+
+button.add_button('exit',exit_task,50,50,100,100)
+
+
 #define colours
 blue = 26, 0, 255
 cream = 254, 255, 25
