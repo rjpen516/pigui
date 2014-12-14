@@ -4,7 +4,7 @@ from pygame.locals import *
 import time
 import subprocess
 import os
-import pprint
+from pprint import pprint
 import glob
 os.environ["SDL_FBDEV"] = "/dev/fb1"
 os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
