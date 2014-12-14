@@ -33,7 +33,6 @@ def refresh_menu_screen():
 	screen.fill(white) #change the colours if needed
 	font=pygame.font.Font(None,24)
 	title_font=pygame.font.Font(None,34)
-	station_font=pygame.font.Font(None,20)
 	label=title_font.render("MPC RADIO", 1, (blue))
 	label2=font.render("Streaming Internet Radio", 1, (red))
 	screen.blit(label,(105, 15))
@@ -42,9 +41,9 @@ def refresh_menu_screen():
 	# draw the main elements on the screen
 	#screen.blit(play,(20,80))
 	#screen.blit(pause,(80,80))
-	pygame.draw.rect(screen, red, (8, 70, 304, 108),1)
-	pygame.draw.line(screen, red, (8,142),(310,142),1)
-	pygame.draw.rect(screen, cream, (10, 143, 300, 33),0)
+	#pygame.draw.rect(screen, red, (8, 70, 304, 108),1)
+	#pygame.draw.line(screen, red, (8,142),(310,142),1)
+	#pygame.draw.rect(screen, cream, (10, 143, 300, 33),0)
 	#screen.blit(refresh,(270,70))
 	#screen.blit(previous,(10,180))
 	#screen.blit(next,(70,180))
@@ -53,7 +52,7 @@ def refresh_menu_screen():
 	#screen.blit(mute,(250,180))
     #    screen.blit(exit,(270,5))
 	#screen.blit(radio,(2,1))
-	pygame.draw.rect(screen, blue, (0,0,320,240),3)
+	pygame.draw.rect(screen, green, (0,0,width,height),3)
 
 	pygame.display.flip()
 
@@ -61,10 +60,10 @@ def main():
         while 1:
                 for event in pygame.event.get():
                         if event.type == pygame.MOUSEBUTTONDOWN:
-                                print "screen pressed" #for debugging purposes
-                                pos = (pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
-                                print pos #for checking
-                                pygame.draw.circle(screen, white, pos, 2, 0) #for debugging purposes - adds a small dot where the screen is pressed
+                                #print "screen pressed" #for debugging purposes
+                                #pos = (pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
+                                #print pos #for checking
+                                #pygame.draw.circle(screen, white, pos, 2, 0) #for debugging purposes - adds a small dot where the screen is pressed
                                 on_click()
 
 	pygame.display.update()
