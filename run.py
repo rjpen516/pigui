@@ -4,29 +4,12 @@ from pygame.locals import *
 import time
 import subprocess
 import os
+import pprint
 import glob
 os.environ["SDL_FBDEV"] = "/dev/fb1"
 os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
 os.environ["SDL_MOUSEDRV"] = "TSLIB"
 pygame.init()
-
-
-#define function that checks for mouse location
-def on_click():
-	click_pos = (pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
-	#check to see if exit has been pressed
-	if 270 <= click_pos[0] <= 320 and 10 <= click_pos[1] <=50:
-		print "You pressed exit"
-		button(0)
-
-
-#define action on pressing buttons
-def button(number):
-	print "You pressed button ",number
-	if number == 0:    #specific script when exiting
-		pass
-        #do something with the screen or handle a task
-
 
 class Button(object):
     def __init__(self):
@@ -37,6 +20,7 @@ class Button(object):
 
     def on_click(self,x,y):
         for button in self.buttons:
+            pprint(button)
             print "I have X: %s <= %s <= %s  Y: %s <= %s <= %s" % (button[1],str(x),button[2],button[3],str(y),button[4])
             if button[1] <= x <= button[2] and button[3] <= y <= button[4]:
                 button[0]
