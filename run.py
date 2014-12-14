@@ -24,9 +24,10 @@ class Button(object):
         self.attributes[name]['y_top'] = y1
         self.attributes[name]['width'] = x2 - x1
         self.attributes[name]['height'] = y2 - y1
+        self.attributes[name]['color'] = red
 
-    def add_attributes(self,name, value):
-        self.attributes[name] = value
+    def add_attributes(self,name,type, value):
+        self.attributes[name][type] = value
 
 
     def on_click(self,x,y):
@@ -92,25 +93,12 @@ def main():
     while 1:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                #print "screen pressed" #for debugging purposes
-                #pos = (pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
-                #print pos #for checking
-                #pygame.draw.circle(screen, white, pos, 2, 0) #for debugging purposes - adds a small dot where the screen is pressed
                 button.on_click(pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
 
 	pygame.display.update()
 
 
 #################### EVERTHING HAS NOW BEEN DEFINED ###########################
-
-#set size of the screen
-size = width, height = 480, 320
-screen = pygame.display.set_mode(size)
-button = Button(screen)
-
-button.add_button('exit',exit_task,50,50,100,100)
-button.add_button('test2',exit_task,200,200,225,225)
-
 #define colours
 blue = 26, 0, 255
 cream = 254, 255, 25
@@ -119,6 +107,18 @@ white = 255, 255, 255
 yellow = 255, 255, 0
 red = 255, 0, 0
 green = 0, 255, 0
+
+
+#set size of the screen
+size = width, height = 480, 320
+screen = pygame.display.set_mode(size)
+button = Button(screen)
+
+button.add_button('exit',exit_task,50,50,100,100)
+button.add_attributes('exit','color',red)
+button.add_button('test2',exit_task,200,200,225,225)
+button.add_attributes('test2','color',blue)
+
 refresh_menu_screen()  #refresh the menu interface
 main() #check for key presses and start emergency exit
 
