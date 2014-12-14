@@ -33,10 +33,8 @@ def refresh_menu_screen():
 	screen.fill(white) #change the colours if needed
 	font=pygame.font.Font(None,24)
 	title_font=pygame.font.Font(None,34)
-	label=title_font.render("MPC RADIO", 1, (blue))
-	label2=font.render("Streaming Internet Radio", 1, (red))
-	screen.blit(label,(105, 15))
-	screen.blit(label2,(88, 45))
+	label=title_font.render("Example Label", 1, (blue))
+	screen.blit(label,(5, 15))
 	#play=pygame.image.load("play.tiff")
 	# draw the main elements on the screen
 	#screen.blit(play,(20,80))
