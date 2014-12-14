@@ -42,7 +42,7 @@ class Button(object):
     def __render__(self):
         for key in self.buttons:
             data = self.attributes[key]
-            pygame.draw.rect(self.screen,red,(data['x_left'],
+            pygame.draw.rect(self.screen,data['color'],(data['x_left'],
                                               data['y_top'],
                                               data['width'],
                                               data['height']))
