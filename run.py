@@ -17,9 +17,11 @@ os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
 os.environ["SDL_MOUSEDRV"] = "TSLIB"
 pygame.init()
 
+FLIP = True
+
 
 def exit_task():
-    label.add_label('example2','Fuck You Jerermy',200,30)
+    label.add_attribute('example2','active',FLIP)
     refresh_menu_screen()
 
 
@@ -65,7 +67,7 @@ button.add_attributes('test2','color',blue)
 
 
 label.add_label('example','Example Label',50,30)
-
+label.add_label('example2','Fuck You Jerermy',200,30,active=False)
 
 refresh_menu_screen()  #refresh the menu interface
 main() #check for key presses and start emergency exit

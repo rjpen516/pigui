@@ -12,11 +12,12 @@ class Label(object):
         self.attributes = defaultdict(dict)
 
 
-    def add_label(self, name, value,x,y):
+    def add_label(self, name, value,x,y,active=True):
         self.labels[name] = value
         self.attributes[name]['color'] = black
         self.attributes[name]['x'] = x
         self.attributes[name]['y'] = y
+        self.attributes[name]['active'] = active
 
     def add_attribute(self,name,type,value):
         self.attributes[name][type] = value
@@ -24,6 +25,7 @@ class Label(object):
 
     def __render__(self):
         for key in self.labels:
-             title_font=pygame.font.Font(None,34)
-             label=title_font.render(self.labels[key], 1, (self.attributes[key]['color']))
-             self.screen.blit(label,(self.attributes[key]['x'],self.attributes[key]['y']))
+            if self.attributes[key]['active'] == True:
+                title_font=pygame.font.Font(None,34)
+                label=title_font.render(self.labels[key], 1, (self.attributes[key]['color']))
+                self.screen.blit(label,(self.attributes[key]['x'],self.attributes[key]['y']))
