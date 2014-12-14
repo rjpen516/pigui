@@ -20,7 +20,7 @@ class Button(object):
 
     def on_click(self,x,y):
         for button in self.buttons:
-            pprint(button)
+            #pprint(button)
             value = self.buttons[button]
             print "I have X: %s <= %s <= %s  Y: %s <= %s <= %s" % (value[1],str(x),value[2],value[3],str(y),value[4])
             if value[1] <= x <= value[2] and value[3] <= y <= value[4]:
@@ -41,8 +41,8 @@ def refresh_menu_screen():
     screen.blit(label,(5, 15))
 
     #make an example button
-    pygame.draw.rect(screen, red, (50, 60, 60, 70), 0)
-    button.add_button('exit',exit_task,50,60,60,70)
+    pygame.draw.rect(screen, red, (25, 25, 25, 25), 0)
+    button.add_button('exit',exit_task,0,0,50,50)
 
 
 	#play=pygame.image.load("play.tiff")
