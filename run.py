@@ -47,11 +47,11 @@ def refresh_menu_screen():
 	pygame.draw.rect(screen, cream, (10, 143, 300, 33),0)
 	#screen.blit(refresh,(270,70))
 	#screen.blit(previous,(10,180))
-	screen.blit(next,(70,180))
+	#screen.blit(next,(70,180))
     #    screen.blit(vol_down,(130,180))
 	#screen.blit(vol_up,(190,180))
 	#screen.blit(mute,(250,180))
-        screen.blit(exit,(270,5))
+    #    screen.blit(exit,(270,5))
 	#screen.blit(radio,(2,1))
 	pygame.draw.rect(screen, blue, (0,0,320,240),3)
 
