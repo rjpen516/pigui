@@ -38,7 +38,7 @@ class Button(object):
                 value[0]
 
     def __render__(self):
-        for key in button.keys():
+        for key in self.buttons:
             data = self.attributes[key]
             pygame.draw.rect(self.screen,red,(data['x_left'],
                                               data['y_top'],
