@@ -28,13 +28,33 @@ def button(number):
         #do something with the screen or handle a task
 
 
+class Button(object):
+    def __init__(self):
+        self.buttons = {}
+
+    def add_button(self,name,task_on_click,x1,y1,x2,y2):
+        self.buttons[name] = (task_on_click,x1,x2,y1,y2)
+
+    def on_click(self,x,y):
+        for button in self.buttons:
+            if button[1] <= x <= button[2] and button[3] <= y <= button[4]:
+                button[0]
+
+
+
+
 def refresh_menu_screen():
 #set up the fixed items on the menu
 	screen.fill(white) #change the colours if needed
-	font=pygame.font.Font(None,24)
+
+    #make an example label
 	title_font=pygame.font.Font(None,34)
 	label=title_font.render("Example Label", 1, (blue))
 	screen.blit(label,(5, 15))
+
+    #make an example button
+	pygame.draw.rect(screen, red, (50, 60, 60, 70), 0)
+
 	#play=pygame.image.load("play.tiff")
 	# draw the main elements on the screen
 	#screen.blit(play,(20,80))
@@ -54,15 +74,21 @@ def refresh_menu_screen():
 
 	pygame.display.flip()
 
+def exit_task():
+    print "I should exit"
+
 def main():
-        while 1:
-                for event in pygame.event.get():
-                        if event.type == pygame.MOUSEBUTTONDOWN:
-                                #print "screen pressed" #for debugging purposes
-                                #pos = (pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
-                                #print pos #for checking
-                                #pygame.draw.circle(screen, white, pos, 2, 0) #for debugging purposes - adds a small dot where the screen is pressed
-                                on_click()
+
+    button = Button()
+    button.add_button('exit',exit_task,50,60,60,70)
+    while 1:
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                #print "screen pressed" #for debugging purposes
+                #pos = (pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
+                #print pos #for checking
+                #pygame.draw.circle(screen, white, pos, 2, 0) #for debugging purposes - adds a small dot where the screen is pressed
+                button.on_click(pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
 
 	pygame.display.update()
 
