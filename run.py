@@ -19,38 +19,16 @@ pygame.init()
 
 
 def exit_task():
-    print "I should exit"
+    label.add_label('example2','Fuck You Jerermy',200,30)
+    refresh_menu_screen()
 
 
 def refresh_menu_screen():
 #set up the fixed items on the menu
     screen.fill(white) #change the colours if needed
 
-    #make an example label
-    #title_font=pygame.font.Font(None,34)
-    #label=title_font.render("Example Label", 1, (blue))
-    #screen.blit(label,(5, 15))
-
     button.__render__()
     label.__render__()
-
-
-	#play=pygame.image.load("play.tiff")
-	# draw the main elements on the screen
-	#screen.blit(play,(20,80))
-	#screen.blit(pause,(80,80))
-	#pygame.draw.rect(screen, red, (8, 70, 304, 108),1)
-	#pygame.draw.line(screen, red, (8,142),(310,142),1)
-	#pygame.draw.rect(screen, cream, (10, 143, 300, 33),0)
-	#screen.blit(refresh,(270,70))
-	#screen.blit(previous,(10,180))
-	#screen.blit(next,(70,180))
-    #    screen.blit(vol_down,(130,180))
-	#screen.blit(vol_up,(190,180))
-	#screen.blit(mute,(250,180))
-    #    screen.blit(exit,(270,5))
-	#screen.blit(radio,(2,1))
-    #pygame.draw.rect(screen, green, (0,0,width,height),3)
 
     pygame.display.flip()
 
@@ -87,6 +65,7 @@ button.add_attributes('test2','color',blue)
 
 
 label.add_label('example','Example Label',50,30)
+
 
 refresh_menu_screen()  #refresh the menu interface
 main() #check for key presses and start emergency exit
