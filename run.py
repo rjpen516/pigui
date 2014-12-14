@@ -33,9 +33,10 @@ class Button(object):
         for button in self.buttons:
             #pprint(button)
             value = self.buttons[button]
-            print "I have X: %s <= %s <= %s  Y: %s <= %s <= %s" % (value[1],str(x),value[2],value[3],str(y),value[4])
+            #print "I have X: %s <= %s <= %s  Y: %s <= %s <= %s" % (value[1],str(x),value[2],value[3],str(y),value[4])
             if value[1] <= x <= value[2] and value[3] <= y <= value[4]:
                 value[0]
+                print "Button Press on %s at (%s,%s)" % (button,x,y)
 
     def __render__(self):
         for key in self.buttons:
@@ -108,7 +109,7 @@ screen = pygame.display.set_mode(size)
 button = Button(screen)
 
 button.add_button('exit',exit_task,50,50,100,100)
-
+button.add_button('test2',exit_task,200,200,225,225)
 
 #define colours
 blue = 26, 0, 255
