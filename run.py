@@ -41,7 +41,7 @@ def refresh_menu_screen():
     screen.blit(label,(5, 15))
 
     #make an example button
-    pygame.draw.rect(screen, red, (25, 25, 25, 25), 0)
+    pygame.draw.rect(screen, red, (25, 25, 50, 50), 0)
     button.add_button('exit',exit_task,0,0,50,50)
 
 
