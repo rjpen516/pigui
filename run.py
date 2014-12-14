@@ -42,19 +42,23 @@ class Button(object):
                 button[0]
 
 
+def exit_task():
+    print "I should exit"
 
 
 def refresh_menu_screen():
 #set up the fixed items on the menu
-	screen.fill(white) #change the colours if needed
+    screen.fill(white) #change the colours if needed
 
     #make an example label
-	title_font=pygame.font.Font(None,34)
-	label=title_font.render("Example Label", 1, (blue))
-	screen.blit(label,(5, 15))
+    title_font=pygame.font.Font(None,34)
+    label=title_font.render("Example Label", 1, (blue))
+    screen.blit(label,(5, 15))
 
     #make an example button
-	pygame.draw.rect(screen, red, (50, 60, 60, 70), 0)
+    pygame.draw.rect(screen, red, (50, 60, 60, 70), 0)
+    button.add_button('exit',exit_task,50,60,60,70)
+
 
 	#play=pygame.image.load("play.tiff")
 	# draw the main elements on the screen
@@ -71,17 +75,16 @@ def refresh_menu_screen():
 	#screen.blit(mute,(250,180))
     #    screen.blit(exit,(270,5))
 	#screen.blit(radio,(2,1))
-	pygame.draw.rect(screen, green, (0,0,width,height),3)
+    pygame.draw.rect(screen, green, (0,0,width,height),3)
 
-	pygame.display.flip()
+    pygame.display.flip()
 
-def exit_task():
-    print "I should exit"
+
+button = Button()
 
 def main():
 
-    button = Button()
-    button.add_button('exit',exit_task,50,60,60,70)
+
     while 1:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
