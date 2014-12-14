@@ -8,6 +8,7 @@ from pprint import pprint
 from collections import defaultdict
 from color import *
 from button import Button
+from label import Label
 
 
 import glob
@@ -26,12 +27,12 @@ def refresh_menu_screen():
     screen.fill(white) #change the colours if needed
 
     #make an example label
-    title_font=pygame.font.Font(None,34)
-    label=title_font.render("Example Label", 1, (blue))
-    screen.blit(label,(5, 15))
+    #title_font=pygame.font.Font(None,34)
+    #label=title_font.render("Example Label", 1, (blue))
+    #screen.blit(label,(5, 15))
 
     button.__render__()
-
+    label.__render__()
 
 
 	#play=pygame.image.load("play.tiff")
@@ -49,7 +50,7 @@ def refresh_menu_screen():
 	#screen.blit(mute,(250,180))
     #    screen.blit(exit,(270,5))
 	#screen.blit(radio,(2,1))
-    pygame.draw.rect(screen, green, (0,0,width,height),3)
+    #pygame.draw.rect(screen, green, (0,0,width,height),3)
 
     pygame.display.flip()
 
@@ -76,11 +77,16 @@ def main():
 size = width, height = 480, 320
 screen = pygame.display.set_mode(size)
 button = Button(screen)
+label = Label(screen)
 
 button.add_button('exit',exit_task,50,50,100,100)
 button.add_attributes('exit','color',red)
+button.add_attributes('exit','text','EXIT')
 button.add_button('test2',exit_task,200,200,225,225)
 button.add_attributes('test2','color',blue)
+
+
+label.add_label('example','Example Label',50,30)
 
 refresh_menu_screen()  #refresh the menu interface
 main() #check for key presses and start emergency exit

@@ -1,0 +1,29 @@
+from collections import defaultdict
+import pygame
+from color import *
+__author__ = 'richard'
+
+
+
+class Label(object):
+    def __init__(self, screen):
+        self.labels = {}
+        self.screen = screen
+        self.attributes = defaultdict(dict)
+
+
+    def add_label(self, name, value,x,y):
+        self.labels[name] = value
+        self.attributes[name]['color'] = black
+        self.attributes[name]['x'] = x
+        self.attributes[name]['y'] = y
+
+    def add_attribute(self,name,type,value):
+        self.attributes[name][type] = value
+
+
+    def __render__(self):
+        for key in self.labels:
+             title_font=pygame.font.Font(None,34)
+             label=title_font.render(self.labels[key], 1, (self.attributes[key]['color']))
+             self.screen.blit(label,(self.attributes[key]['x'],self.attributes[key]['y']))
