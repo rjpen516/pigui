@@ -27,6 +27,6 @@ class Label(object):
     def __render__(self):
         for key in self.labels:
             if self.attributes[key]['active'] == True:
-                title_font=pygame.font.Font(None,self.attributes['size'])
+                title_font=pygame.font.Font(None,int(self.attributes['size']))
                 label=title_font.render(self.labels[key], 1, (self.attributes[key]['color']))
                 self.screen.blit(label,(self.attributes[key]['x'],self.attributes[key]['y']))
