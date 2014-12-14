@@ -18,6 +18,7 @@ class Label(object):
         self.attributes[name]['x'] = x
         self.attributes[name]['y'] = y
         self.attributes[name]['active'] = active
+        self.attributes[name]['size'] = 34
 
     def add_attribute(self,name,type,value):
         self.attributes[name][type] = value
@@ -26,6 +27,6 @@ class Label(object):
     def __render__(self):
         for key in self.labels:
             if self.attributes[key]['active'] == True:
-                title_font=pygame.font.Font(None,34)
+                title_font=pygame.font.Font(None,self.attributes['size'])
                 label=title_font.render(self.labels[key], 1, (self.attributes[key]['color']))
                 self.screen.blit(label,(self.attributes[key]['x'],self.attributes[key]['y']))

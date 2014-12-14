@@ -48,11 +48,6 @@ def main():
 	pygame.display.update()
 
 
-#################### EVERTHING HAS NOW BEEN DEFINED ###########################
-#define colours
-
-
-
 #set size of the screen
 size = width, height = 480, 320
 screen = pygame.display.set_mode(size)
@@ -67,7 +62,8 @@ button.add_attributes('test2','color',blue)
 
 
 label.add_label('example','Example Label',50,30)
-label.add_label('example2','Fuck You Jerermy',200,30,active=False)
+label.add_label('example2','Fuck You',225,30,active=False)
+
 
 refresh_menu_screen()  #refresh the menu interface
 main() #check for key presses and start emergency exit
