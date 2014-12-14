@@ -37,7 +37,7 @@ class Button(object):
 
     def on_click(self,x,y):
         for button in self.buttons:
-            print "I have X: %i <= $i <= $i  Y: %i <= %i <= %i",button[1],x,button[2],button[3],y,button[4]
+            print "I have X: %i <= $i <= $i  Y: %i <= %i <= %i" % button[1],x,button[2],button[3],y,button[4]
             if button[1] <= x <= button[2] and button[3] <= y <= button[4]:
                 button[0]
 
