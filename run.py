@@ -21,9 +21,10 @@ class Button(object):
     def on_click(self,x,y):
         for button in self.buttons:
             pprint(button)
-            print "I have X: %s <= %s <= %s  Y: %s <= %s <= %s" % (button[1],str(x),button[2],button[3],str(y),button[4])
-            if button[1] <= x <= button[2] and button[3] <= y <= button[4]:
-                button[0]
+            value = self.buttons[button]
+            print "I have X: %s <= %s <= %s  Y: %s <= %s <= %s" % (value[1],str(x),value[2],value[3],str(y),value[4])
+            if value[1] <= x <= value[2] and value[3] <= y <= value[4]:
+                value[0]
 
 
 def exit_task():
