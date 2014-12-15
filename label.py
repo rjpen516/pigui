@@ -23,7 +23,7 @@ class Label(object):
 
     def add_attribute(self,name,type,value):
         self.attributes[name][type] = value
-        self.render_queue.add(1)
+        self.render_queue.put(1)
 
     def set_render_queue(self, queue):
         self.render_queue = queue
