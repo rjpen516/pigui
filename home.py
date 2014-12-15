@@ -37,6 +37,7 @@ class Home(Canvas):
         label.add_label('example2','Fuck You',225,30,active=False)
 
 
+        global output_label
         output_label = label
 
 
