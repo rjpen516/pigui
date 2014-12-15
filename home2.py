@@ -36,8 +36,8 @@ class Home2(Canvas):
         button.add_attributes('exit','color',red)
         button.add_attributes('exit','text','Hid Text')
 
-        
-        button.add_button('test2',exit_task,200,200,225,225)
+
+        button.add_button('test2',self.back_task,200,200,225,225)
         button.add_attributes('test2','color',blue)
         button.add_attributes('test2','text','Back')
 
