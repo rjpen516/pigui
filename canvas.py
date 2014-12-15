@@ -17,6 +17,7 @@ class Canvas(object):
     def __init__(self,name):
         self.name = name
         self.objects = []
+        self.render_queue = None
 
     def __setup__(self):
         #preform any setup modules here (like init buttons)
@@ -25,9 +26,13 @@ class Canvas(object):
     def set_screen(self,screen):
         self.screen = screen
 
+    def set_render_queue(self,queue):
+        self.render_queue = queue
+
 
     def register_widgets(self, widget):
         self.objects.append(widget)
+        widget.set_render_queue(self.render_queue)
 
     def on_click(self,x,y):
         for object in self.objects:

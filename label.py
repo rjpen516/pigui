@@ -10,6 +10,7 @@ class Label(object):
         self.labels = {}
         self.screen = screen
         self.attributes = defaultdict(dict)
+        self.render_queue = None
 
 
     def add_label(self, name, value,x,y,active=True):
@@ -22,6 +23,10 @@ class Label(object):
 
     def add_attribute(self,name,type,value):
         self.attributes[name][type] = value
+        self.render_queue.add(1)
+
+    def set_render_queue(self, queue):
+        self.render_queue = queue
 
 
     def __render__(self):

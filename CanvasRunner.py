@@ -1,3 +1,5 @@
+from multiprocessing import Queue
+
 __author__ = 'richard'
 import sys, pygame
 from pygame.locals import *
@@ -23,6 +25,7 @@ class CanvasRunner(object):
         self.default_canvas = ''
         self.canvas_stack = []
         self.current_canvas = ''
+        self.render_queue = Queue()
 
         self.size = width, height = 480, 320
         self.screen = pygame.display.set_mode(self.size)
@@ -31,6 +34,7 @@ class CanvasRunner(object):
         self.canvas[name] = canvas_obj
 
         self.canvas[name].set_screen(self.screen)
+        self.canvas[name].set_render_queue(self.render_queue)
 
         self.canvas[name].__setup__(self.screen)
 
@@ -54,6 +58,8 @@ class CanvasRunner(object):
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.canvas[self.current_canvas].on_click(pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
-            self.__render__()
-
+            if not self.render_queue.empty():
+                while not self.render_queue.empty():
+                    self.render_queue.get(block=False)
+                self.__render__()
 
