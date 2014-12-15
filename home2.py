@@ -22,6 +22,7 @@ def exit_task():
 
 
 
+
 class Home2(Canvas):
     def __setup__(self, screen):
         button = Button(screen)
@@ -33,9 +34,12 @@ class Home2(Canvas):
         
         button.add_button('exit',exit_task,50,50,100,100)
         button.add_attributes('exit','color',red)
-        button.add_attributes('exit','text','EXIT')
+        button.add_attributes('exit','text','Hid Text')
+
+        
         button.add_button('test2',exit_task,200,200,225,225)
         button.add_attributes('test2','color',blue)
+        button.add_attributes('test2','text','Back')
 
 
         label.add_label('example','Hello World',50,30)
@@ -45,7 +49,8 @@ class Home2(Canvas):
         global output_label
         output_label = label
 
-
+    def back_task(self):
+        self.runner.back_canvas()
 
 
 
