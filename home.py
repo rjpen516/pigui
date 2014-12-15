@@ -7,8 +7,12 @@ from color import *
 
 
 
+output_label = None
+
 def exit_task():
     print "Hello World"
+    output_label.add_attribute('example2','active',True)
+
 
 
 
@@ -31,5 +35,11 @@ class Home(Canvas):
 
         label.add_label('example','Example Label',50,30)
         label.add_label('example2','Fuck You',225,30,active=False)
+
+
+        output_label = label
+
+
+
 
 
