@@ -34,7 +34,7 @@ class CanvasRunner(object):
 
         self.canvas[name].__setup__(self.screen)
 
-        if len(self.canvas.keys()) == 0:
+        if len(self.canvas.keys()) == 1:
             self.canvas_stack.append(canvas_obj)
             self.default_canvas = name
             self.current_canvas = name
