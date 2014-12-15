@@ -54,5 +54,6 @@ class CanvasRunner(object):
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.canvas[self.current_canvas].on_click(pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
+            self.__render__()
 
 
