@@ -18,6 +18,7 @@ class Canvas(object):
         self.name = name
         self.objects = []
         self.render_queue = None
+        self.runner = None
 
     def __setup__(self):
         #preform any setup modules here (like init buttons)
@@ -28,6 +29,9 @@ class Canvas(object):
 
     def set_render_queue(self,queue):
         self.render_queue = queue
+
+    def set_runner(self,runner):
+        self.runner = runner
 
 
     def register_widgets(self, widget):

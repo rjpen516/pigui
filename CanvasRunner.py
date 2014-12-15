@@ -35,6 +35,7 @@ class CanvasRunner(object):
 
         self.canvas[name].set_screen(self.screen)
         self.canvas[name].set_render_queue(self.render_queue)
+        self.canvas[name].set_runner(self)
 
         self.canvas[name].__setup__(self.screen)
 
@@ -42,6 +43,16 @@ class CanvasRunner(object):
             self.canvas_stack.append(canvas_obj)
             self.default_canvas = name
             self.current_canvas = name
+
+    def change_canvas(self, name):
+        self.canvas_stack.append(self.current_canvas)
+        self.current_canvas = name
+        self.__render__()
+
+    def back_canvas(self):
+        old_canvas = self.canvas_stack.pop()
+        self.current_canvas = old_canvas
+        self.__render__()
 
     def set_default_canvas(self, name):
         self.default_canvas = name
