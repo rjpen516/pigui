@@ -9,10 +9,15 @@ from color import *
 
 output_label = None
 
+has_shown = True
+
 def exit_task():
     print "Hello World"
-    output_label.add_attribute('example2','active',True)
+    global has_shown
 
+    output_label.add_attribute('example2','active',has_shown)
+
+    has_shown = not has_shown
 
 
 
