@@ -50,7 +50,7 @@ class Home(Canvas):
         output_label = label
 
     def new_canvas_task(self):
-        home2 = Home2()
+        home2 = Home2('home2')
         self.runner.add_canvas('home2',home2)
         self.runner.change_canvas('home2')
 
