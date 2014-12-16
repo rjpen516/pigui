@@ -28,6 +28,9 @@ class Label(object):
     def set_render_queue(self, queue):
         self.render_queue = queue
 
+    def set_text(self, name ,value):
+        self.lables[name] = value
+
     def get_attribute(self,name,type):
         return self.attributes[name][type]
 
