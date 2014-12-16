@@ -17,35 +17,45 @@ class MoveLabel(Widget,Clickable):
         self.widget_name = label_name
         self.widget = widget
 
+        self.attributes = {}
+
         self.button = Button(screen)
         self.label = Label(screen)
 
 
     def __setup__(self):
+
+        self.attributes['x'] = self.runner.size[0] - 75
+        self.attributes['y'] = self.runner.size[1] - 50
+
+
         self.label.add_label('xvalue_label', 'X:',0,100)
         self.label.add_label('xvalue_value', '', 20,100)
 
         self.label.add_label('yvalue_label', 'Y:',0,150)
         self.label.add_label('yvalue_value', '', 20,150)
 
+        x = self.attributes['x']
+        y = self.attributes['y']
 
-        self.button.add_button('up',self.move_up,200,200,225,225)
+
+        self.button.add_button('up',self.move_up,x+25,y,x+50,y+25)
         self.button.add_attributes('up','text','^')
         self.button.add_attributes('up','color',green)
         self.button.add_attributes('up','text_size',15)
 
 
-        self.button.add_button('down',self.move_down,200,225,225,250)
+        self.button.add_button('down',self.move_down,x+25,y+25,x+50,y+50)
         self.button.add_attributes('down','text','V')
         self.button.add_attributes('down','color',green)
         self.button.add_attributes('down','text_size',15)
 
-        self.button.add_button('left',self.move_left,175,225,200,250)
+        self.button.add_button('left',self.move_left,x,y+25,x+25,y+50)
         self.button.add_attributes('left','text','<')
         self.button.add_attributes('left','color',green)
         self.button.add_attributes('left','text_size',15)
 
-        self.button.add_button('right',self.move_right,225,225,250,250)
+        self.button.add_button('right',self.move_right,x+50,y+25,x+75,y+50)
         self.button.add_attributes('right','text','>')
         self.button.add_attributes('right','color',green)
         self.button.add_attributes('right','text_size',15)

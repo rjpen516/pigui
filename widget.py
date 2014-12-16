@@ -15,3 +15,6 @@ class Widget(object):
     def set_render_queue(self,queue):
         print "Superclass Widget"
         self.render_queue = queue
+
+    def set_runner(self, runner):
+        self.runner = runner
