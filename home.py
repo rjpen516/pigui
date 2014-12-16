@@ -27,10 +27,10 @@ class Home(Canvas):
         self.register_widgets(self.label)
 
 
-        self.label.add_label('welcome', 'Welcome to Hacking Pi',125,5)
+        self.label.add_label('welcome', 'Welcome to Hacking Pi',125,5,self.change_button_click)
         self.label.add_attribute('welcome','size',34)
 
-        self.label.add_label('welcome_undertext','Your Source to a touchscreen hacking',125,30)
+        self.label.add_label('welcome_undertext','Your Source to a touchscreen hacking',125,30,self.change_button_click)
         self.label.add_attribute('welcome_undertext','size',15)
         self.label.add_attribute('welcome_undertext','color',red)
 
@@ -54,4 +54,5 @@ class Home(Canvas):
 
 
 
-
+    def change_button_click(self):
+        pass
