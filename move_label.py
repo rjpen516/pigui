@@ -78,6 +78,7 @@ class MoveLabel(Widget,Clickable):
 
     def add_attribute(self,type,value):
         self.attributes[type] = value
+        self.render_queue.put(1)
 
 
     def update_xy_value(self):
