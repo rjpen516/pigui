@@ -25,6 +25,7 @@ class Button(object):
         self.attributes[name]['color'] = red
         self.label.add_label(name,'',x1,y1,active=False)
 
+
     def add_attributes(self,name,type, value):
         self.attributes[name][type] = value
         if type == 'text':
@@ -41,6 +42,7 @@ class Button(object):
 
     def set_render_queue(self, queue):
         self.render_queue = queue
+        self.label.set_render_queue(self.render_queue)
 
 
     def on_click(self,x,y):
