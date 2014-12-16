@@ -66,26 +66,26 @@ class MoveLabel(Widget,Clickable):
 
 
     def update_xy_value(self):
-        self.label.set_text('xvalue_value',str(self.label.get_attribute('welcome_undertext','x')))
-        self.label.set_text('yvalue_value',str(self.label.get_attribute('welcome_undertext','y')))
+        self.label.set_text('xvalue_value',str(self.label.get_attribute(self.widget_name,'x')))
+        self.label.set_text('yvalue_value',str(self.label.get_attribute(self.widget_name,'y')))
 
     def move_down(self):
-        self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','y')+5)
+        self.widget.add_attribute(self.widget_name,'y',self.widget.get_attribute(self.widget_name,'y')+5)
         self.update_xy_value()
         self.label.__render__()
 
     def move_up(self):
-        self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','y')-5)
+        self.widget.add_attribute(self.widget_name,'y',self.widget.get_attribute(self.widget_name,'y')-5)
         self.update_xy_value()
         self.label.__render__()
 
     def move_left(self):
-        self.label.add_attribute('welcome_undertext','x',self.label.get_attribute('welcome_undertext','x')-5)
+        self.widget.add_attribute(self.widget_name,'x',self.widget.get_attribute(self.widget_name,'x')-5)
         self.update_xy_value()
         self.label.__render__()
 
     def move_right(self):
-        self.label.add_attribute('welcome_undertext','x',self.label.get_attribute('welcome_undertext','x')+5)
+        self.widget.add_attribute(self.widget_name,'x',self.widget.get_attribute(self.widget_name,'x')+5)
         self.update_xy_value()
         self.label.__render__()
 
