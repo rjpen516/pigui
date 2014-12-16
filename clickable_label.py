@@ -26,8 +26,12 @@ class ClickableLabel(Label,Clickable):
         super(ClickableLabel,self).add_attribute(name,type,value)
         #if the size changes, we need to update the button
         if type == 'size' or type=='x' or type =='y':
-            self.button.add_attributes(name,'x',self.get_attribute(name,'x') + self.get_attribute(name,'size')*len(self.get_text(name)))
-            self.button.add_attributes(name,'y',self.get_attribute(name,'y') + self.get_attribute(name,'size'))
+            self.button.set_button_placement(name,
+                                             self.get_attribute(name,'x'),
+                                             self.get_attribute(name,'y'),
+                                             self.get_attribute(name,'x') + self.get_attribute(name,'size')*len(self.get_text(name)),
+                                             self.get_attribute(name,'y') + self.get_attribute(name,'size'))
+
 
         self.render_queue.put(1)
 
@@ -36,9 +40,11 @@ class ClickableLabel(Label,Clickable):
     def set_text(self, name ,value):
         super(ClickableLabel,self).set_text(name,value)
         #update that button to span the new text area
-        self.button.add_attributes(name,'x',self.get_attribute(name,'base_x') + self.get_attribute(name,'size')*len(self.get_text(name)))
-        self.button.add_attributes(name,'y',self.get_attribute(name,'base_y') + self.get_attribute(name,'size'))
-
+        self.button.set_button_placement(name,
+                                             self.get_attribute(name,'x'),
+                                             self.get_attribute(name,'y'),
+                                             self.get_attribute(name,'x') + self.get_attribute(name,'size')*len(self.get_text(name)),
+                                             self.get_attribute(name,'y') + self.get_attribute(name,'size'))
     def set_render_queue(self,queue):
         super(ClickableLabel,self).set_render_queue(queue)
         self.button.set_render_queue(queue)

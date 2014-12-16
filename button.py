@@ -54,7 +54,11 @@ class Button(Widget, Clickable):
         super(Button,self).set_render_queue(queue)
 
 
-
+    def set_button_placement(self,name,x1,y1,x2,y2):
+        self.attributes[name]['x_left'] = x1
+        self.attributes[name]['y_top'] = y1
+        self.attributes[name]['width'] = x2 - x1
+        self.attributes[name]['height'] = y2 - y1
 
     def on_click(self,x,y):
         for button in self.buttons:
