@@ -29,6 +29,8 @@ class ClickableLabel(Label,Clickable):
             self.button.add_attributes(name,'x',self.get_attribute(name,'x') + self.get_attribute(name,'size')*len(self.get_text(name)))
             self.button.add_attributes(name,'y',self.get_attribute(name,'y') + self.get_attribute(name,'size'))
 
+        self.render_queue.put(1)
+
 
 
     def set_text(self, name ,value):
