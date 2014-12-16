@@ -48,7 +48,7 @@ class Home(Canvas):
 
         self.move_label.add_attribute('visable', not editor_up)
         editor_up = not editor_up
-        self.label.set_text('show_editor','Hide Move')
+        self.button.add_attribute('show_editor','text','Hide Move')
 
 
 
