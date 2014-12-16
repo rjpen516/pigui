@@ -29,7 +29,7 @@ class Label(object):
         self.render_queue = queue
 
     def set_text(self, name ,value):
-        self.lables[name] = value
+        self.labels[name] = value
 
     def get_attribute(self,name,type):
         return self.attributes[name][type]
