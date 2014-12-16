@@ -50,6 +50,12 @@ class MoveLabel(object):
         self.button.add_button('update_value',self.update_xy_value,0,100,40,200)
         self.button.add_attributes('update_value','color',white)
 
+
+    def set_render_queue(self, queue):
+        self.render_queue = queue
+        self.button.render_queue = queue
+        self.label.render_queue = queue
+
     def update_xy_value(self):
         self.label.set_text('xvalue_value',str(self.label.get_attribute('welcome_undertext','x')))
         self.label.set_text('yvalue_value',str(self.label.get_attribute('welcome_undertext','y')))
