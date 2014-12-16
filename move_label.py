@@ -13,6 +13,7 @@ from color import *
 
 class MoveLabel(Widget,Clickable):
     def __init__(self,screen,label_name,widget,visable=True):
+        super(MoveLabel,self).__init__()
         self.screen = screen
         self.widget_name = label_name
         self.widget = widget
