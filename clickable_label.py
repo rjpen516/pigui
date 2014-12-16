@@ -25,7 +25,7 @@ class ClickableLabel(Label,Clickable):
     def add_attribute(self,name,type,value):
         super(ClickableLabel,self).add_attribute(name,type,value)
         #if the size changes, we need to update the button
-        if type == 'size':
+        if type == 'size' or type=='x' or type =='y':
             self.button.add_attributes(name,'x',self.get_attribute(name,'x') + self.get_attribute(name,'size')*len(self.get_text(name)))
             self.button.add_attributes(name,'y',self.get_attribute(name,'y') + self.get_attribute(name,'size'))
 
