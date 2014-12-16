@@ -33,7 +33,7 @@ class Home(Canvas):
         self.label.add_attribute('welcome_undertext','color',red)
 
 
-        self.button.add_button('show_editor',self.make_moving_form_visable,0,self.runner.size[1]-20,90,self.runner.size[1])
+        self.button.add_button('show_editor',self.make_moving_form_visable,0,self.runner.size[1]-20,78,self.runner.size[1])
         self.button.add_attributes('show_editor','text','Show Edit')
         self.button.add_attributes('show_editor','text_size',20)
 
