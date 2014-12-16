@@ -46,12 +46,12 @@ class Home(Canvas):
         self.button.add_attributes('up','text_size',15)
 
 
-        self.button.add_button('down',self.move_up,225,225,250,250)
-        self.button.add_attributes('down','text','^')
+        self.button.add_button('down',self.move_down,200,225,225,250)
+        self.button.add_attributes('down','text','V')
         self.button.add_attributes('down','color',green)
         self.button.add_attributes('down','text_size',15)
 
-        self.button.add_button('left',self.move_left,175,225,200,250)
+        self.button.add_button('left',self.move_left,175,225,200,225)
         self.button.add_attributes('left','text','<')
         self.button.add_attributes('left','color',green)
         self.button.add_attributes('left','text_size',15)
