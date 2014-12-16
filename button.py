@@ -14,7 +14,7 @@ class Button(object):
         self.screen = screen
         self.attributes = defaultdict(dict)
         self.render_queue = None
-        self.label = Label('Button_Label')
+        self.label = Label(screen)
 
     def add_button(self,name,task_on_click,x1,y1,x2,y2):
         self.buttons[name] = (task_on_click,x1,x2,y1,y2)
@@ -43,6 +43,7 @@ class Button(object):
     def set_render_queue(self, queue):
         self.render_queue = queue
         self.label.set_render_queue(self.render_queue)
+
 
 
     def on_click(self,x,y):
