@@ -31,6 +31,7 @@ class CanvasRunner(object):
         self.screen = pygame.display.set_mode(self.size)
 
     def add_canvas(self,name,canvas_obj):
+        print "Adding a new canvas the the app with name %s " %(name)
         self.canvas[name] = canvas_obj
 
         self.canvas[name].set_screen(self.screen)
@@ -45,12 +46,15 @@ class CanvasRunner(object):
             self.current_canvas = name
 
     def change_canvas(self, name):
+        print "Changing Canvas from %s to %s" % (self.current_canvas, name)
         self.canvas_stack.append(self.current_canvas)
         self.current_canvas = name
         self.__render__()
 
     def back_canvas(self):
+
         old_canvas = self.canvas_stack.pop()
+        print "Going back to an old canvas, poping %s" %(old_canvas)
         self.current_canvas = old_canvas
         self.__render__()
 
