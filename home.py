@@ -51,12 +51,12 @@ class Home(Canvas):
         self.button.add_attributes('down','color',green)
         self.button.add_attributes('down','text_size',15)
 
-        self.button.add_button('left',self.move_left,175,225,200,225)
+        self.button.add_button('left',self.move_left,175,225,200,250)
         self.button.add_attributes('left','text','<')
         self.button.add_attributes('left','color',green)
         self.button.add_attributes('left','text_size',15)
 
-        self.button.add_button('right',self.move_right,250,225,275,250)
+        self.button.add_button('right',self.move_right,225,225,250,250)
         self.button.add_attributes('right','text','>')
         self.button.add_attributes('right','color',green)
         self.button.add_attributes('right','text_size',15)
@@ -86,12 +86,12 @@ class Home(Canvas):
         self.label.__render__()
 
     def move_left(self):
-        self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','x')-5)
+        self.label.add_attribute('welcome_undertext','x',self.label.get_attribute('welcome_undertext','x')-5)
         self.update_xy_value()
         self.label.__render__()
 
     def move_right(self):
-        self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','x')+5)
+        self.label.add_attribute('welcome_undertext','x',self.label.get_attribute('welcome_undertext','x')+5)
         self.update_xy_value()
         self.label.__render__()
 
