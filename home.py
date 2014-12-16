@@ -56,7 +56,7 @@ class Home(Canvas):
 
     def update_xy_value(self):
         self.label.add_attribute('xvalue_value','text',self.label.get_attribute('welcome_undertext','x'))
-        self.label.add_attribute('yvalue_value','text',self.label.get_attribute(('welcome_undertext','y')))
+        self.label.add_attribute('yvalue_value','text',self.label.get_attribute('welcome_undertext','y'))
 
     def move_down(self):
         self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','y')+5)
