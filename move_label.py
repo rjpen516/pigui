@@ -1,3 +1,5 @@
+from widget import Widget
+
 __author__ = 'richard'
 
 
@@ -8,7 +10,7 @@ from color import *
 
 
 
-class MoveLabel(object):
+class MoveLabel(Widget):
     def __init__(self,screen,label_name,widget):
         self.screen = screen
         self.widget_name = label_name
@@ -18,6 +20,7 @@ class MoveLabel(object):
         self.label = Label(screen)
 
 
+    def __setup__(self):
         self.label.add_label('xvalue_label', 'X:',0,100)
         self.label.add_label('xvalue_value', '', 20,100)
 
@@ -52,7 +55,7 @@ class MoveLabel(object):
 
 
     def set_render_queue(self, queue):
-        self.render_queue = queue
+        super(Widget,self).set_render_queue(queue)
         self.button.render_queue = queue
         self.label.render_queue = queue
 

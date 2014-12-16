@@ -4,11 +4,13 @@ from color import *
 import sys, pygame
 from pygame.locals import *
 from label import Label
+from widget import Widget
+
 
 __author__ = 'richard'
 
 
-class Button(object):
+class Button(Widget):
     def __init__(self, screen):
         self.buttons = {}
         self.screen = screen
@@ -24,6 +26,7 @@ class Button(object):
         self.attributes[name]['height'] = y2 - y1
         self.attributes[name]['color'] = red
         self.label.add_label(name,'',x1,y1,active=False)
+
 
 
     def add_attributes(self,name,type, value):
@@ -45,7 +48,7 @@ class Button(object):
 
 
     def set_render_queue(self, queue):
-        self.render_queue = queue
+        super(Widget,self).set_render_queue(queue)
         self.label.set_render_queue(self.render_queue)
 
 

@@ -1,0 +1,16 @@
+__author__ = 'richard'
+
+
+
+class Widget(object):
+    def __init__(self):
+        pass
+
+    def __setup__(self):
+        pass
+
+    def __render__(self):
+        pass
+
+    def set_render_queue(self,queue):
+        self.render_queue = queue

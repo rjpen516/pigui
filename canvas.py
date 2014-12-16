@@ -37,6 +37,7 @@ class Canvas(object):
     def register_widgets(self, widget):
         self.objects.append(widget)
         widget.set_render_queue(self.render_queue)
+        widget.__setup__()
 
     def on_click(self,x,y):
         for object in self.objects:

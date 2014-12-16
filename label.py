@@ -3,9 +3,9 @@ import pygame
 from color import *
 __author__ = 'richard'
 
+from widget import Widget
 
-
-class Label(object):
+class Label(Widget):
     def __init__(self, screen):
         self.labels = {}
         self.screen = screen
@@ -26,7 +26,7 @@ class Label(object):
         self.render_queue.put(1)
 
     def set_render_queue(self, queue):
-        self.render_queue = queue
+        super(Widget,self).set_render_queue(queue)
 
     def set_text(self, name ,value):
         self.labels[name] = value
