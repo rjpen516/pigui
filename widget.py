@@ -13,4 +13,5 @@ class Widget(object):
         pass
 
     def set_render_queue(self,queue):
+        print "Superclass Widget"
         self.render_queue = queue

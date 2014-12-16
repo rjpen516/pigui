@@ -55,6 +55,7 @@ class MoveLabel(Widget):
 
 
     def set_render_queue(self, queue):
+        print "MoveLabel Widget"
         self.button.render_queue = queue
         self.label.render_queue = queue
         super(MoveLabel,self).set_render_queue(queue)
