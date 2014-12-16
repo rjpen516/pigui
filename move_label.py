@@ -12,15 +12,16 @@ from color import *
 
 
 class MoveLabel(Widget,Clickable):
-    def __init__(self,screen,label_name,widget):
+    def __init__(self,screen,label_name,widget,visable=True):
         self.screen = screen
         self.widget_name = label_name
         self.widget = widget
 
-        self.attributes = {}
-
         self.button = Button(screen)
         self.label = Label(screen)
+
+        self.attributes['visable'] = visable
+
 
 
     def __setup__(self):
@@ -74,6 +75,9 @@ class MoveLabel(Widget,Clickable):
         self.label.set_render_queue(queue)
         super(MoveLabel,self).set_render_queue(queue)
 
+    def add_attribute(self,type,value):
+        self.attributes[type] = value
+
 
     def update_xy_value(self):
         self.label.set_text('xvalue_value',str(self.widget.get_attribute(self.widget_name,'x')))
@@ -100,6 +104,7 @@ class MoveLabel(Widget,Clickable):
         self.label.__render__()
 
     def __render__(self):
-        self.button.__render__()
-        self.label.__render__()
-        self.widget.__render__()
+        if self.attributes['visable'] == True:
+            self.button.__render__()
+            self.label.__render__()
+            self.widget.__render__()
