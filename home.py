@@ -41,6 +41,7 @@ class Home(Canvas):
         
 
         self.button.add_button('test2',self.move_down,200,200,225,225)
+        self.button.add_attributes('test2','text','UP')
         self.button.add_attributes('test2','color',blue)
 
         self.button.add_button('update_value',self.update_xy_value,0,100,40,200)
@@ -63,6 +64,20 @@ class Home(Canvas):
         self.update_xy_value()
         self.label.__render__()
 
+    def move_up(self):
+        self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','y')-5)
+        self.update_xy_value()
+        self.label.__render__()
+
+    def move_left(self):
+        self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','x')-5)
+        self.update_xy_value()
+        self.label.__render__()
+
+    def move_right(self):
+        self.label.add_attribute('welcome_undertext','y',self.label.get_attribute('welcome_undertext','x')+5)
+        self.update_xy_value()
+        self.label.__render__()
 
 
 

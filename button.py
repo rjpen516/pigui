@@ -3,6 +3,7 @@ from color import *
 
 import sys, pygame
 from pygame.locals import *
+from label import Label
 
 __author__ = 'richard'
 
@@ -13,6 +14,7 @@ class Button(object):
         self.screen = screen
         self.attributes = defaultdict(dict)
         self.render_queue = None
+        self.label = Label('Button_Label')
 
     def add_button(self,name,task_on_click,x1,y1,x2,y2):
         self.buttons[name] = (task_on_click,x1,x2,y1,y2)
@@ -21,9 +23,20 @@ class Button(object):
         self.attributes[name]['width'] = x2 - x1
         self.attributes[name]['height'] = y2 - y1
         self.attributes[name]['color'] = red
+        self.label.add_label(name,'',x1,y1,active=False)
 
     def add_attributes(self,name,type, value):
         self.attributes[name][type] = value
+        if type == 'text':
+            self.label.set_text(name,value)
+        #if we are chaing the position of the button, we need to update the position of the label as well
+        if type=='x_left':
+            self.label.add_attribute(name,'x',value)
+        if type=='y_top':
+            self.label.add_attribute(name,'y',value)
+
+        self.render_queue.put(1)
+
 
     def set_render_queue(self, queue):
         self.render_queue = queue
@@ -45,5 +58,9 @@ class Button(object):
                                               data['y_top'],
                                               data['width'],
                                               data['height']))
+
+        #render the labels in the buttons after we do the backgrounds
+        self.label.__render__()
+
 
 
