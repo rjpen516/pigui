@@ -10,7 +10,7 @@ from home2 import Home2
 
 
 
-
+editor_up = False
 
 
 
@@ -42,8 +42,14 @@ class Home(Canvas):
 
 
 
+
     def make_moving_form_visable(self):
-        self.move_label.add_attribute('visable', True)
+        global editor_up
+
+        self.move_label.add_attribute('visable', not editor_up)
+        editor_up = not editor_up
+        self.label.set_text('show_editor','Hide Move')
+
 
 
 
