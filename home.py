@@ -40,16 +40,32 @@ class Home(Canvas):
         self.label.add_label('yvalue_value', '', 20,150)
         
 
-        self.button.add_button('test2',self.move_down,200,200,225,225)
-        self.button.add_attributes('test2','text','DOWN')
-        self.button.add_attributes('test2','color',blue)
+        self.button.add_button('up',self.move_up,200,200,225,225)
+        self.button.add_attributes('up','text','^')
+        self.button.add_attributes('up','color',green)
+        self.button.add_attributes('up','text_size',15)
+
+
+        self.button.add_button('down',self.move_up,225,225,250,250)
+        self.button.add_attributes('down','text','^')
+        self.button.add_attributes('down','color',green)
+        self.button.add_attributes('down','text_size',15)
+
+        self.button.add_button('left',self.move_left,175,225,200,250)
+        self.button.add_attributes('left','text','<')
+        self.button.add_attributes('left','color',green)
+        self.button.add_attributes('left','text_size',15)
+
+        self.button.add_button('left',self.move_right,250,225,275,250)
+        self.button.add_attributes('left','text','>')
+        self.button.add_attributes('left','color',green)
+        self.button.add_attributes('left','text_size',15)
+
 
         self.button.add_button('update_value',self.update_xy_value,0,100,40,200)
-        self.button.add_attributes('update_value','color',green)
+        self.button.add_attributes('update_value','color',white)
 
 
-        global output_label
-        output_label = self.label
 
         self.update_xy_value()
 

@@ -36,6 +36,10 @@ class Button(object):
             self.label.add_attribute(name,'x',value)
         if type=='y_top':
             self.label.add_attribute(name,'y',value)
+        if type=='text_size':
+            self.label.add_attribute(name,'size',value)
+        if type=='text_color':
+            self.label.add_attribute(name,'color',value)
 
         self.render_queue.put(1)
 
