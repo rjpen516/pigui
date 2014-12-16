@@ -44,6 +44,9 @@ class ClickableLabel(Label,Clickable):
         super(ClickableLabel,self).set_runner(runner)
         self.button.set_runner(runner)
 
+    def __render__(self):
+        super(ClickableLabel,self).__render__()
+        self.button.__render__()
 
 
     def on_click(self,x,y):
