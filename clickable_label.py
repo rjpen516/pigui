@@ -26,8 +26,10 @@ class ClickableLabel(Label,Clickable):
         super(ClickableLabel,self).add_attribute(name,type,value)
         #if the size changes, we need to update the button
         if type == 'size':
-            self.button.add_attributes(name,'x',self.get_attribute(name,'base_x') + self.get_attribute(name,'size')*len(self.get_text(name)))
-            self.button.add_attributes(name,'y',self.get_attribute(name,'base_y') + self.get_attribute(name,'size'))
+            self.button.add_attributes(name,'x',self.get_attribute(name,'x') + self.get_attribute(name,'size')*len(self.get_text(name)))
+            self.button.add_attributes(name,'y',self.get_attribute(name,'y') + self.get_attribute(name,'size'))
+
+
 
     def set_text(self, name ,value):
         super(ClickableLabel,self).set_text(name,value)
@@ -45,8 +47,8 @@ class ClickableLabel(Label,Clickable):
         self.button.set_runner(runner)
 
     def __render__(self):
-        super(ClickableLabel,self).__render__()
         self.button.__render__()
+        super(ClickableLabel,self).__render__()
 
 
     def on_click(self,x,y):
