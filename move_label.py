@@ -66,8 +66,8 @@ class MoveLabel(Widget,Clickable):
 
 
     def update_xy_value(self):
-        self.label.set_text('xvalue_value',str(self.label.get_attribute(self.widget_name,'x')))
-        self.label.set_text('yvalue_value',str(self.label.get_attribute(self.widget_name,'y')))
+        self.label.set_text('xvalue_value',str(self.widget.get_attribute(self.widget_name,'x')))
+        self.label.set_text('yvalue_value',str(self.widget.get_attribute(self.widget_name,'y')))
 
     def move_down(self):
         self.widget.add_attribute(self.widget_name,'y',self.widget.get_attribute(self.widget_name,'y')+5)
