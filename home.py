@@ -35,14 +35,14 @@ class Home(Canvas):
         self.register_widgets(label)
 
 
-        label.add_label('welcome', 'Welcome to Hacking Pi',200,40)
+        label.add_label('welcome', 'Welcome to Hacking Pi',125,5)
         label.add_attribute('welcome','size',34)
 
-        label.add_label('welcome_undertext','Your Source to a touchscreen hack',200,80)
+        label.add_label('welcome_undertext','Your Source to a touchscreen hack',125,15)
         label.add_attribute('welcome_undertext','size',15)
         label.add_attribute('welcome_undertext','color',red)
 
-        
+
 
         
         button.add_button('exit',show_text_task,50,50,100,100)
