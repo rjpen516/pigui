@@ -29,6 +29,9 @@ class Label(Widget):
     def set_text(self, name ,value):
         self.labels[name] = value
 
+    def get_text(self,name):
+        return self.labels[name]
+
     def get_attribute(self,name,type):
         return self.attributes[name][type]
 

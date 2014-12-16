@@ -1,3 +1,5 @@
+from clickable_label import ClickableLabel
+
 __author__ = 'richard'
 
 from canvas import Canvas
@@ -18,7 +20,7 @@ editor_up = False
 class Home(Canvas):
     def __setup__(self, screen):
         self.button = Button(screen)
-        self.label = Label(screen)
+        self.label = ClickableLabel(screen)
 
 
         self.register_widgets(self.button)
