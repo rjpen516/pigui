@@ -41,7 +41,7 @@ class Home(Canvas):
         
 
         self.button.add_button('test2',self.move_down,200,200,225,225)
-        self.button.add_attributes('test2','text','UP')
+        self.button.add_attributes('test2','text','DOWN')
         self.button.add_attributes('test2','color',blue)
 
         self.button.add_button('update_value',self.update_xy_value,0,100,40,200)

@@ -29,6 +29,7 @@ class Button(object):
         self.attributes[name][type] = value
         if type == 'text':
             self.label.set_text(name,value)
+            self.label.add_attribute(name,'active',True)
         #if we are chaing the position of the button, we need to update the position of the label as well
         if type=='x_left':
             self.label.add_attribute(name,'x',value)
