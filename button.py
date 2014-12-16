@@ -6,11 +6,13 @@ from pygame.locals import *
 from label import Label
 from widget import Widget
 
+from Clickable import Clickable
+
 
 __author__ = 'richard'
 
 
-class Button(Widget):
+class Button(Widget, Clickable):
     def __init__(self, screen):
         self.buttons = {}
         self.screen = screen

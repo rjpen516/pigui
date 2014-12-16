@@ -1,3 +1,5 @@
+from Clickable import Clickable
+
 __author__ = 'richard'
 
 
@@ -41,7 +43,7 @@ class Canvas(object):
 
     def on_click(self,x,y):
         for object in self.objects:
-            if isinstance(object,Button):
+            if isinstance(object,Clickable):
                 object.on_click(x,y)
         #after we run the user code, we need to update the screen, so lets render it up
         self.__render__()

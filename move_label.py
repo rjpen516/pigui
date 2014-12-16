@@ -1,3 +1,4 @@
+from Clickable import Clickable
 from widget import Widget
 
 __author__ = 'richard'
@@ -10,7 +11,7 @@ from color import *
 
 
 
-class MoveLabel(Widget):
+class MoveLabel(Widget,Clickable):
     def __init__(self,screen,label_name,widget):
         self.screen = screen
         self.widget_name = label_name
