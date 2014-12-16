@@ -48,8 +48,9 @@ class Button(Widget):
 
 
     def set_render_queue(self, queue):
-        super(Button,self).set_render_queue(queue)
         self.label.set_render_queue(self.render_queue)
+        super(Button,self).set_render_queue(queue)
+
 
 
 

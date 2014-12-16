@@ -55,9 +55,10 @@ class MoveLabel(Widget):
 
 
     def set_render_queue(self, queue):
-        super(MoveLabel,self).set_render_queue(queue)
         self.button.render_queue = queue
         self.label.render_queue = queue
+        super(MoveLabel,self).set_render_queue(queue)
+
 
     def update_xy_value(self):
         self.label.set_text('xvalue_value',str(self.label.get_attribute('welcome_undertext','x')))

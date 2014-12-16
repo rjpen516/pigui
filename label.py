@@ -25,8 +25,6 @@ class Label(Widget):
         self.attributes[name][type] = value
         self.render_queue.put(1)
 
-    def set_render_queue(self, queue):
-        super(Label,self).set_render_queue(queue)
 
     def set_text(self, name ,value):
         self.labels[name] = value
