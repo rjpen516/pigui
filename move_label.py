@@ -55,6 +55,9 @@ class MoveLabel(Widget,Clickable):
         self.button.add_attributes('update_value','color',white)
 
 
+    def on_click(self,x,y):
+        self.button.on_click(x,y)
+
     def set_render_queue(self, queue):
         print "MoveLabel Widget"
         self.button.set_render_queue(queue)
