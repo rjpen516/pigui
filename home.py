@@ -14,7 +14,7 @@ from home2 import Home2
 
 editor_up = False
 
-
+current_label = None
 
 
 class Home(Canvas):
@@ -42,7 +42,10 @@ class Home(Canvas):
         self.move_label = MoveLabel(screen,'welcome_undertext',self.label, visable=False)
         self.register_widgets(self.move_label)
 
-
+	global current_label
+	current_label = 'welcome_undertext'
+	
+	
 
 
     def make_moving_form_visable(self):
@@ -54,5 +57,9 @@ class Home(Canvas):
 
 
 
-    def change_button_click(self):
-        pass
+    def change_button_click(self,name):
+        self.move_label.set_select_label(name)
+
+
+	
+	

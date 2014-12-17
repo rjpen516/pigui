@@ -7,10 +7,20 @@ from color import *
 __author__ = 'richard'
 
 
+class ClickableLabelButton(Button):
+    def on_click(self,x,y):
+        for button in self.buttons:
+            value = self.buttons[button]
+            if value[1] <= x <= value[2] and value[3] <= y <= value[4]:
+                value[0](button)
+                print "Button Press on %s at (%s,%s) and sending button name" % (button,x,y)
+
+
+
 class ClickableLabel(Label,Clickable):
     def __init__(self,screen):
         super(ClickableLabel,self).__init__(screen)
-        self.button = Button(screen)
+        self.button = ClickableLabelButton(screen)
 
     def add_label(self, name, value,x,y,task,active=True):
         super(ClickableLabel,self).add_label(name,value,x,y,active)
@@ -20,10 +30,14 @@ class ClickableLabel(Label,Clickable):
         self.button.add_button(name,task,x,y,
                                self.get_attribute(name,'size')*len(value)+x,
                                self.get_attribute(name,'size')+y)
-        self.button.add_attribute(name,'color',green)
+        self.button.add_attribute(name,'color',white)
 
     def add_attribute(self,name,type,value):
-        super(ClickableLabel,self).add_attribute(name,type,value)
+        if type == 'button_color':
+            self.button.add_attribute(name,'color',value)
+            return
+
+	super(ClickableLabel,self).add_attribute(name,type,value)
         #if the size changes, we need to update the button
         if type == 'size' or type=='x' or type =='y':
             self.button.set_button_placement(name,
@@ -32,7 +46,7 @@ class ClickableLabel(Label,Clickable):
                                              self.get_attribute(name,'x') + self.get_attribute(name,'size')*len(self.get_text(name)),
                                              self.get_attribute(name,'y') + self.get_attribute(name,'size'))
 
-
+	
         self.render_queue.put(1)
 
 

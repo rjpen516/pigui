@@ -80,6 +80,12 @@ class MoveLabel(Widget,Clickable):
         self.attributes[type] = value
         self.render_queue.put(1)
 
+    def set_select_label(self,name):
+	self.widget.add_attribute(self.widget_name,'button_color',white)
+	self.widget_name = name
+	self.widget.add_attribute(self.widget_name,'button_color',green)
+        self.render_queue.put(1)
+	
 
     def update_xy_value(self):
         self.label.set_text('xvalue_value',str(self.widget.get_attribute(self.widget_name,'x')))
