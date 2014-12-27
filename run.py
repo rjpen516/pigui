@@ -6,10 +6,10 @@ import subprocess
 import os
 from pprint import pprint
 from collections import defaultdict
-from color import *
-from button import Button
-from label import Label
-from CanvasRunner import CanvasRunner
+from pigui.color import *
+from pigui.button import Button
+from pigui.label import Label
+from pigui.CanvasRunner import CanvasRunner
 from home import Home
 
 
