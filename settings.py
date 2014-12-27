@@ -20,7 +20,7 @@ class Settings(Canvas):
 
 	
         self.button = Button(screen)
-        self.listview = ListView(screen,self.interface_list, 20,20, self.runner.size[0]-20, self.runner.size[1]-20) 
+        self.listview = ListView(screen,self.interface_list, 20,20, self.runner.size[0]-20, self.runner.size[1]-20,self.on_wifi_select) 
         self.label = Label(screen)
 	self.clicklabel = ClickableLabel(screen)
 
@@ -59,6 +59,10 @@ class Settings(Canvas):
 	self.button.add_attributes('shutdown','text','shutdown')
 	self.button.add_attributes('shutdown','color',red)
 	self.button.add_attributes('shutdown','text_size',20)
+	self.setup_interface()
+
+    def on_wifi_select(self,index):
+	print "I got the following index %d" %(index)
 
     def open_wifi_settings(self):
         self.listview.set_active(True)
@@ -68,6 +72,11 @@ class Settings(Canvas):
 
     def back(self):
         self.runner.back_canvas()
+
+    def setup_interface(self):
+	interfaces = netifaces.interfaces()
+	for interface in interfaces:
+		self.interface_list.append(interface)
 
     def update_ip(self):
 	interfaces = netifaces.interfaces()

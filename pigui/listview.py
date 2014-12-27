@@ -12,12 +12,14 @@ import pygame
 
 
 class ListView(Widget):
-    def __init__(self,screen,list,x1,y1,x2,y2,size=20):
+    def __init__(self,screen,list,x1,y1,x2,y2,onselectaction,size=20):
         super(ListView,self).__init__()
         self.canvas = ListViewCanvas('list_view_picker',screen,list,x1,y1,x2,y2,self,size)
         self.active = False
 	print "Creating ListView with left top (%d,%d) to (%d,%d)" %(x1,y1,x2,y2)
-	
+	self.onselect = onselectaction
+
+
     def __setup__(self):
         self.runner.add_canvas('list_view_picker',self.canvas)
 
@@ -65,7 +67,8 @@ class ListViewCanvas(Canvas):
 	self.first_element_seen = 0
         #this guy will determine how many elements we draw unto the screen, the font size is 20
 	self.elements_on_screen = (y2 - y1) / self.config['text_size']
-
+	self.selected = 0
+	self.selected_window = 0
 
     def __setup__(self,screen):
         #create scroll system
@@ -83,28 +86,54 @@ class ListViewCanvas(Canvas):
 	self.button.add_button('scroll_up',self.scroll_up,self.x2-20,self.y1,self.x2,self.y2/2)
 	self.button.add_button('scroll_down',self.scroll_down,self.x2-20,self.y1+(self.y2-self.y1)/2,self.x2,self.y2)
 	self.button.add_button('go_back',self.back,self.x1,self.y2-15,self.x1 + (self.x2-self.x1)/2,self.y2)	
-
+	self.button.add_button('select',self.select,self.x1 + (self.x2-self.x1)/2,self.y2-15,self.x2-20,self.y2)
+	
 	self.button.add_attributes('scroll_up','color',green)
         self.button.add_attributes('scroll_down','color',blue)
 	self.button.add_attributes('go_back','color',red)
+	self.button.add_attributes('select','color',green)
 
 	self.button.add_attributes('scroll_up','text_size',self.config['text_size'])
 	self.button.add_attributes('scroll_down','text_size',self.config['text_size'])
 
 	#setup the possible label slots onto the screen
 	for i in range(0,self.elements_on_screen-1):
-	    self.label.add_label(str(i),'Test Label',self.x1,self.y1 + self.config['text_size']*i)
+	    self.label.add_label(str(i),'',self.x1,self.y1 + self.config['text_size']*i)
 	    self.label.add_attribute(str(i),'size',self.config['text_size'])
+	    if i == self.selected:
+	        self.label.add_attribute(str(i),'color',red)
 
     def set_active(self,active):
         self.active = active
 	self.render_queue.put(1)
 
+    def select(self):
+	self.back()
+	self.widget.onselect(self.selected)
+
+    def update_labels(self):
+	i = 0
+	for item in self.list[max(self.selected-self.elements_on_screen,0):]:
+	    self.label.set_text(str(i),item)
+	    i+=1
+
     def scroll_up(self):
-        pass
+        self.selected -= 1
+	self.label.add_attribute(str(self.selected+1),'color',black)
+	self.label.add_attribute(str(self.selected),'color',red)
 
     def scroll_down(self):
-        pass
+        self.selected += 1
+	self.selected_window +=1
+
+	#do a check to see if we have anymore to show, if not do nothing
+
+	if(self.selected_window > self.elements_on_screen):
+	    #we need to move everything up
+	    self.selected_window -=1
+            pass
+	self.label.add_attribute(str(self.selected_window-1),'color',black)
+	self.label.add_attribute(str(self.selected_window),'color',red)
 
     def back(self):
 	self.active = False
@@ -114,6 +143,8 @@ class ListViewCanvas(Canvas):
     def __render__(self):
         if not self.active:
             return
+
+	self.update_labels()
 
         self.button.__render__()
         self.label.__render__()
