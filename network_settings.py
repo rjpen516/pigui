@@ -1,5 +1,6 @@
 from pigui.button import Button
 from pigui.canvas import Canvas
+from pigui.color import *
 from pigui.label import Label
 
 __author__ = 'richard'
@@ -25,3 +26,8 @@ class NetworkSettings(Canvas):
 
         self.label.add_label('welcome_undertext', 'For interface: ' + self.interface, 125, 30)
         self.label.add_attribute('welcome_undertext', 'size', 15)
+
+        self.button.add_button('back', self.runner.back_canvas, 0, 0, 30, 30)
+        self.button.add_attributes('back', 'text', '<<')
+        self.button.add_attributes('back', 'color', cream)
+        self.button.add_attributes('back', 'text_size', 20)
