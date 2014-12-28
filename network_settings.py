@@ -40,7 +40,7 @@ class NetworkSettings(Canvas):
 
         #information labels
         self.label.add_label('ip_addr_label','IP Address',30,60)
-        self.label.add_attributes('ip_addr_label','size',20)
+        self.label.add_attribute('ip_addr_label','size',20)
         self.label.add_label('ip_addr', '',90,60)
         self.label.add_attribute('ip_addr','size',20)
 
