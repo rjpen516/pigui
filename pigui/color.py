@@ -1,6 +1,5 @@
 __author__ = 'richard'
 
-
 blue = 26, 0, 255
 cream = 254, 255, 25
 black = 0, 0, 0

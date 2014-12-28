@@ -15,7 +15,6 @@ from home import Home
 
 program = CanvasRunner()
 
-
 home = Home('homescreen')
-program.add_canvas('homescreen',home)
+program.add_canvas('homescreen', home)
 program.main()

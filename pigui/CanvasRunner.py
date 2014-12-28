@@ -30,8 +30,8 @@ class CanvasRunner(object):
         self.size = width, height = 480, 320
         self.screen = pygame.display.set_mode(self.size)
 
-    def add_canvas(self,name,canvas_obj):
-        print "Adding a new canvas the the app with name %s " %(name)
+    def add_canvas(self, name, canvas_obj):
+        print "Adding a new canvas the the app with name %s " % (name)
         self.canvas[name] = canvas_obj
 
         self.canvas[name].set_screen(self.screen)
@@ -54,7 +54,7 @@ class CanvasRunner(object):
     def back_canvas(self):
 
         old_canvas = self.canvas_stack.pop()
-        print "Going back to an old canvas, poping %s" %(old_canvas)
+        print "Going back to an old canvas, poping %s" % (old_canvas)
         self.current_canvas = old_canvas
         self.__render__()
 
@@ -72,7 +72,7 @@ class CanvasRunner(object):
         while 1:
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.canvas[self.current_canvas].on_click(pygame.mouse.get_pos() [0], pygame.mouse.get_pos() [1])
+                    self.canvas[self.current_canvas].on_click(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
             if not self.render_queue.empty():
                 while not self.render_queue.empty():
                     self.render_queue.get(block=False)
