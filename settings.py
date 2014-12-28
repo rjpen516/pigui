@@ -39,20 +39,25 @@ class Settings(Canvas):
 
 
 
-        self.button.add_button('wifi_settings',self.open_wifi_settings,40,150,140,200)
-        self.button.add_attributes('wifi_settings','text','WiFi')
-	self.button.add_attributes('wifi_settings','color', blue)
-	self.button.add_attributes('wifi_settings','text_color',white)
+        self.button.add_button('network_settings',self.open_wifi_settings,40,150,170,200)
+        self.button.add_attributes('network_settings','text','Net Setting')
+	self.button.add_attributes('network_settings','color', blue)
+	self.button.add_attributes('network_settings','text_color',white)
 
 	self.button.add_button('back',self.back,0,0,30,30)
         self.button.add_attributes('back','text','<<')
 	self.button.add_attributes('back','color',cream)
         self.button.add_attributes('back','text_size',20)	
 	
-	self.clicklabel.add_label('ip_address','',40,200,self.update_ip)
-	self.clicklabel.add_attribute('ip_address','size',20)
-	self.clicklabel.add_attribute('ip_address','color',black)
+	self.clicklabel.add_label('wlan_ip_address','',40,200,self.update_ip)
+	self.clicklabel.add_attribute('wlan_ip_address','size',20)
+	self.clicklabel.add_attribute('wlan_ip_address','color',black)
 	#self.clicklabel.add_attribute('ip_address','button_color',green)
+
+	self.clicklabel.add_label('eth_ip_address','',40,220,self.update_ip)
+	self.clicklabel.add_attribute('eth_ip_address','size',20)
+	self.clicklabel.add_attribute('eth_ip_address','color',black)
+
 	self.update_ip()
 
 	self.button.add_button('shutdown',self.shutdown_pi,self.runner.size[0]-60,self.runner.size[1]-20,self.runner.size[0],self.runner.size[1])
@@ -81,13 +86,23 @@ class Settings(Canvas):
     def update_ip(self):
 	interfaces = netifaces.interfaces()
 	if 'wlan0' not in interfaces:
-            self.clicklabel.set_text('ip_address','no interface')
+            self.clicklabel.set_text('wlan_ip_address','no interface')
 	else:
             addr = netifaces.ifaddresses('wlan0')
             if addr == None or 2 not in addr.keys() or addr[2][0]['addr'] == '':
-                self.clicklabel.set_text('ip_address','0.0.0.0')
+                self.clicklabel.set_text('wlan_ip_address','wlan0:0.0.0.0')
             else:
-                self.clicklabel.set_text('ip_address','wlan0:'+addr[2][0]['addr'])
+                self.clicklabel.set_text('wlan_ip_address','wlan0:'+addr[2][0]['addr'])
+
+	if 'eth0' not in interfaces:
+	    self.clicklabel.set_text('eth_ip_address','no interface')
+	else:
+	    addr = netifaces.ifaddresses('eth0')
+	    if addr == None or 2 not in addr.keys() or addr[2][0]['addr'] == '':
+	        self.clicklabel.set_text('eth_ip_address','eth0:0.0.0.0')
+	    else:
+                self.clicklabel.set_text('eth_ip_address','eth0:'+addr[2][0]['addr'])
+
 
     def shutdown_pi(self):
         self.label.add_label('shutdown','Shutting Down',40,self.runner.size[1]/2)
