@@ -117,6 +117,14 @@ class ListViewCanvas(Canvas):
 
     def scroll_up(self):
         self.selected -= 1
+
+        if(self.selected_window < self.selected):
+            #we need to move everything down
+            self.selected_windows += 1
+
+        if(self.selected < 0):
+            self.selected = 0
+
         self.label.add_attribute(str(self.selected + 1), 'color', black)
         self.label.add_attribute(str(self.selected), 'color', red)
 
@@ -130,6 +138,11 @@ class ListViewCanvas(Canvas):
             #we need to move everything up
             self.selected_window -= 1
             pass
+
+
+        if(self.selected > len(self.list)):
+            self.selected -= 1
+
         self.label.add_attribute(str(self.selected_window - 1), 'color', black)
         self.label.add_attribute(str(self.selected_window), 'color', red)
 
