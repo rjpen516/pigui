@@ -1,0 +1,27 @@
+from pigui.button import Button
+from pigui.canvas import Canvas
+from pigui.label import Label
+
+__author__ = 'richard'
+
+
+
+class NetworkSettings(Canvas):
+    def __init__(self, name,interface):
+        super(NetworkSettings,self).__init__(name)
+        self.interface = interface
+
+    def __setup__(self, screen):
+
+        self.button = Button(screen)
+        self.label = Label(screen)
+
+
+        self.register_widgets(self.button)
+        self.register_widgets(self.label)
+
+        self.label.add_label('welcome', 'Network Settings', 125, 5)
+        self.label.add_attribute('welcome', 'size', 34)
+
+        self.label.add_label('welcome_undertext', 'For interface: ' + self.interface, 125, 30)
+        self.label.add_attribute('welcome_undertext', 'size', 15)

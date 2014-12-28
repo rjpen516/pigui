@@ -1,3 +1,4 @@
+from network_settings import NetworkSettings
 from pigui.clickable_label import ClickableLabel
 
 __author__ = 'richard'
@@ -66,6 +67,10 @@ class Settings(Canvas):
 
     def on_wifi_select(self, index):
         print "I got the following index %d" % (index)
+
+        network_settings = NetworkSettings('network_settings')
+        self.runner.add_canvas('network_settings', network_settings)
+        self.runner.change_canvas('network_settings')
 
     def open_wifi_settings(self):
         self.listview.set_active(True)
