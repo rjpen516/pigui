@@ -39,7 +39,7 @@ class NetworkSettings(Canvas):
 
 
         #information labels
-        self.label.add_label('ip_addr_label','IP Address',)
+        self.label.add_label('ip_addr_label','IP Address',20,20)
 
         self.get_information()
 
