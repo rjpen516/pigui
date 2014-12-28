@@ -1,7 +1,12 @@
+import pprint
 from pigui.button import Button
 from pigui.canvas import Canvas
 from pigui.color import *
 from pigui.label import Label
+
+import netifaces
+
+
 
 __author__ = 'richard'
 
@@ -31,3 +36,11 @@ class NetworkSettings(Canvas):
         self.button.add_attributes('back', 'text', '<<')
         self.button.add_attributes('back', 'color', cream)
         self.button.add_attributes('back', 'text_size', 20)
+
+        self.get_information()
+
+
+    def get_information(self):
+        interfaces = netifaces.interfaces()
+
+        pprint interfaces
