@@ -43,4 +43,4 @@ class NetworkSettings(Canvas):
     def get_information(self):
         interfaces = netifaces.interfaces()
 
-        pprint(interfaces)
+        pprint.pprint(interfaces)
