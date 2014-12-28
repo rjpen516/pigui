@@ -37,6 +37,10 @@ class NetworkSettings(Canvas):
         self.button.add_attributes('back', 'color', cream)
         self.button.add_attributes('back', 'text_size', 20)
 
+
+        #information labels
+        self.label.add_label('ip_addr_label','IP Address',)
+
         self.get_information()
 
 

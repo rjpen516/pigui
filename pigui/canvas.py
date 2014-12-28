@@ -42,6 +42,7 @@ class Canvas(object):
         widget.__setup__()
 
     def on_click(self, x, y):
+        print "Click on (%d,%d)" %(x,y)
         for object in self.objects:
             if isinstance(object, Clickable):
                 object.on_click(x, y)
