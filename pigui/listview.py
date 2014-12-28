@@ -140,7 +140,7 @@ class ListViewCanvas(Canvas):
             pass
 
 
-        if(self.selected > len(self.list)):
+        if(self.selected >= len(self.list)):
             self.selected -= 1
 
         self.label.add_attribute(str(self.selected_window - 1), 'color', black)
