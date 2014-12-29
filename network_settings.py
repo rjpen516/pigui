@@ -92,6 +92,7 @@ class NetworkSettings(Canvas):
 
 
     def dhcp_release(self):
+
         self.refresh_status(15)
 
 
@@ -112,7 +113,7 @@ class NetworkSettings(Canvas):
             if 17 in info:
                 self.label.set_text('mac_addr',info[17][0]['addr'])
 
-        except Exception:
+        except:
             self.label.set_text('ip_addr','')
             self.label.set_text('mac_addr','Interface Error')
 
