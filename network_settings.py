@@ -57,7 +57,7 @@ class NetworkSettings(Canvas):
     def get_information(self):
         pprint.pprint(netifaces.ifaddresses(self.interface))
 
-        info = netifaces.ifaddress(self.interface)
+        info = netifaces.ifaddresses(self.interface)
         #get the ip addr
         if 2 in info:
             self.label.set_text('ip_addr',info[2]['addr'] + ' bc:' + info[2]['broadcast'] + ' nm:' + info[2]['netmask'])
