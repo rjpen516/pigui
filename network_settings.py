@@ -86,7 +86,7 @@ class NetworkSettings(Canvas):
 
         for i in range(0,time_to_sleep):
             self.get_information()
-        time.sleep(.5)
+            time.sleep(.5)
 
 
 
@@ -96,16 +96,23 @@ class NetworkSettings(Canvas):
 
 
     def get_information(self):
-        pprint.pprint(netifaces.ifaddresses(self.interface))
 
-        info = netifaces.ifaddresses(self.interface)
-        #get the ip addr
-        if 2 in info:
-            self.label.set_text('ip_addr',info[2][0]['addr'] + ' bc:' + info[2][0]['broadcast'] + ' nm:' + info[2][0]['netmask'])
-        else:
-            self.label.set_text('ip_addr','0.0.0.0')
+        try:
 
-        #get mac_address
-        if 17 in info:
-           self.label.set_text('mac_addr',info[17][0]['addr'])
+            pprint.pprint(netifaces.ifaddresses(self.interface))
+
+            info = netifaces.ifaddresses(self.interface)
+            #get the ip addr
+            if 2 in info:
+                self.label.set_text('ip_addr',info[2][0]['addr'] + ' bc:' + info[2][0]['broadcast'] + ' nm:' + info[2][0]['netmask'])
+            else:
+                self.label.set_text('ip_addr','0.0.0.0')
+
+            #get mac_address
+            if 17 in info:
+                self.label.set_text('mac_addr',info[17][0]['addr'])
+
+        except Exception:
+            self.label.set_text('ip_addr','')
+            self.label.set_text('mac_addr','Interface Error')
 
