@@ -60,8 +60,8 @@ class NetworkSettings(Canvas):
         info = netifaces.ifaddresses(self.interface)
         #get the ip addr
         if 2 in info:
-            self.label.set_text('ip_addr',info[2]['addr'] + ' bc:' + info[2]['broadcast'] + ' nm:' + info[2]['netmask'])
+            self.label.set_text('ip_addr',info[2][0]['addr'] + ' bc:' + info[2][0]['broadcast'] + ' nm:' + info[2][0]['netmask'])
 
         #get mac_address
         if 17 in info:
-           self.label.set_text('mac_addr',info[17]['addr'])
+           self.label.set_text('mac_addr',info[17][0]['addr'])
