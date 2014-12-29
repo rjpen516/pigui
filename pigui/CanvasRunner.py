@@ -47,10 +47,10 @@ class CanvasRunner(object):
 
     def change_canvas(self, name):
         print "Changing Canvas from %s to %s" % (self.current_canvas, name)
-        self.current_canvas.__on_pause__()
+        self.canvas[self.current_canvas].__on_pause__()
         self.canvas_stack.append(self.current_canvas)
         self.current_canvas = name
-        self.current__on_resume__()
+        self.canvas[name].__on_resume__()
         self.__render__()
 
     def back_canvas(self):
