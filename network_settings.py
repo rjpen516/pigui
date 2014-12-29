@@ -45,8 +45,23 @@ class NetworkSettings(Canvas):
         self.label.add_attribute('ip_addr','size',20)
 
 
+        self.label.add_label('mac_addr_label','MAC Address',30,75)
+        self.label.add_attribute('mac_addr_label',20)
+        self.label.add_label('mac_addr','',90,75)
+        self.label.add_attribute('mac_addr','size',20)
+
+
         self.get_information()
 
 
     def get_information(self):
         pprint.pprint(netifaces.ifaddresses(self.interface))
+
+        info = netifaces.ifaddress(self.interface)
+        #get the ip addr
+        if 2 in info:
+            self.label.set_text('ip_addr',info[2]['addr'] + ' bc:' + info[2]['broadcast'] + ' nm:' + info[2]['netmask'])
+
+        #get mac_address
+        if 17 in info:
+           self.label.set_text('mac_addr',info[17]['addr'])
