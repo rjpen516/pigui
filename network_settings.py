@@ -71,7 +71,7 @@ class NetworkSettings(Canvas):
         self.get_information()
         self.refresh_status()
 
-        
+
 
     def refresh_status(self):
 
@@ -95,7 +95,7 @@ class NetworkSettings(Canvas):
 
 
     def dhcp_release(self):
-
+        pass
 
 
 
