@@ -1,10 +1,13 @@
 import pprint
+import time
 from pigui.button import Button
 from pigui.canvas import Canvas
 from pigui.color import *
 from pigui.label import Label
 
 import netifaces
+
+import threading
 
 
 
@@ -65,8 +68,30 @@ class NetworkSettings(Canvas):
 
         self.get_information()
 
+    def refresh_status(self,seconds):
+
+        if self.t != None:
+            return
+
+        self.t = threading.Thread(target=self.refresh_worker,args=(seconds,))
+        self.t.start()
+
+
+
+
+
+    def refresh_worker(self,seconds):
+        time_to_sleep = seconds/.5
+
+        for i in range(0,time_to_sleep):
+            self.get_information()
+        time.sleep(.5)
+
+
+
+
     def dhcp_release(self):
-        pass
+        self.refresh_status(15)
 
 
     def get_information(self):
