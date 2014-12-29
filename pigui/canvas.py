@@ -25,6 +25,16 @@ class Canvas(object):
         # preform any setup modules here (like init buttons)
         pass
 
+
+    def __on_exit__(self):
+        pass
+
+    def __on_pause__(self):
+        pass
+
+    def __on_resume__(self):
+        pass
+
     def set_screen(self, screen):
         self.screen = screen
 

@@ -47,16 +47,20 @@ class CanvasRunner(object):
 
     def change_canvas(self, name):
         print "Changing Canvas from %s to %s" % (self.current_canvas, name)
+        self.current_canvas.__on_pause__()
         self.canvas_stack.append(self.current_canvas)
         self.current_canvas = name
+        self.current__on_resume__()
         self.__render__()
 
     def back_canvas(self):
 
         old_canvas = self.canvas_stack.pop()
         print "Going back to an old canvas, poping %s" % (old_canvas)
+        old_canvas.__on_exit__()
         self.current_canvas = old_canvas
         self.__render__()
+
 
     def set_default_canvas(self, name):
         self.default_canvas = name

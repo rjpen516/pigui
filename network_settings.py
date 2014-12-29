@@ -7,7 +7,7 @@ from pigui.label import Label
 
 import netifaces
 
-import threading
+from multiprocessing import Process
 
 
 
@@ -67,6 +67,7 @@ class NetworkSettings(Canvas):
 
 
 
+
         self.get_information()
 
     def refresh_status(self,seconds):
@@ -74,17 +75,16 @@ class NetworkSettings(Canvas):
         if self.t != None:
             return
 
-        self.t = threading.Thread(target=self.refresh_worker,args=(seconds,))
+        self.t = Process(target=self.refresh_worker,args=(seconds,))
         self.t.start()
 
 
+    def __on_exit__(self):
+        self.t.terminiate()
 
 
-
-    def refresh_worker(self,seconds):
-        time_to_sleep = seconds*2
-
-        for i in range(0,time_to_sleep):
+    def refresh_worker(self):
+        while True:
             self.get_information()
             time.sleep(.5)
 
@@ -93,7 +93,7 @@ class NetworkSettings(Canvas):
 
     def dhcp_release(self):
 
-        self.refresh_status(15)
+        self.refresh_status()
 
 
     def get_information(self):
