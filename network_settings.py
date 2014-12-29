@@ -38,10 +38,15 @@ class NetworkSettings(Canvas):
         self.button.add_attributes('back', 'text_size', 20)
 
 
-        self.button.add_button('dhcp_release',self.dhcp_release, self.runner.size[0]-90,0,self.runner.size[0],30)
+        self.button.add_button('dhcp_release',self.dhcp_release, self.runner.size[0]-70,0,self.runner.size[0],25)
         self.button.add_attributes('dhcp_release','text','DHCP Release')
         self.button.add_attributes('dhcp_release','color',red)
-        self.button.add_attributes('dhcp_release','text_size',10)
+        self.button.add_attributes('dhcp_release','text_size',15)
+
+        self.button.add_button('dhcp_renew',self.dhcp_release, self.runner.size[0]-70,26,self.runner.size[0],50)
+        self.button.add_attributes('dhcp_renew','text','DHCP Renew')
+        self.button.add_attributes('dhcp_renew','color',green)
+        self.button.add_attributes('dhcp_renew','text_size',15)
 
 
         #information labels
