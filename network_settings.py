@@ -46,7 +46,7 @@ class NetworkSettings(Canvas):
 
 
         self.label.add_label('mac_addr_label','MAC Address',30,75)
-        self.label.add_attribute('mac_addr_label',20)
+        self.label.add_attribute('mac_addr_label','',20)
         self.label.add_label('mac_addr','',90,75)
         self.label.add_attribute('mac_addr','size',20)
 
