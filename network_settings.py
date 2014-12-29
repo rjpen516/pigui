@@ -38,20 +38,30 @@ class NetworkSettings(Canvas):
         self.button.add_attributes('back', 'text_size', 20)
 
 
+        self.button.add_button('dhcp_release',self.dhcp_release, self.runner.size[0]-90,0,self.runner.size[0],30)
+        self.button.add_attributes('dhcp_release','text','DHCP Release')
+        self.button.add_attributes('dhcp_release','color',red)
+        self.button.add_attributes('dhcp_release','text_size',10)
+
+
         #information labels
-        self.label.add_label('ip_addr_label','IP Address',30,60)
+        self.label.add_label('ip_addr_label','IP Address:',30,60)
         self.label.add_attribute('ip_addr_label','size',20)
         self.label.add_label('ip_addr', '',115,60)
         self.label.add_attribute('ip_addr','size',20)
 
 
-        self.label.add_label('mac_addr_label','MAC Address',30,75)
+        self.label.add_label('mac_addr_label','MAC: ',30,75)
         self.label.add_attribute('mac_addr_label','size',20)
         self.label.add_label('mac_addr','',115,75)
         self.label.add_attribute('mac_addr','size',20)
 
 
+
         self.get_information()
+
+    def dhcp_release(self):
+        pass
 
 
     def get_information(self):
@@ -61,7 +71,10 @@ class NetworkSettings(Canvas):
         #get the ip addr
         if 2 in info:
             self.label.set_text('ip_addr',info[2][0]['addr'] + ' bc:' + info[2][0]['broadcast'] + ' nm:' + info[2][0]['netmask'])
+        else:
+            self.label.set_text('ip_addr','0.0.0.0')
 
         #get mac_address
         if 17 in info:
            self.label.set_text('mac_addr',info[17][0]['addr'])
+
