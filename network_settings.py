@@ -19,6 +19,7 @@ class NetworkSettings(Canvas):
     def __init__(self, name,interface):
         super(NetworkSettings,self).__init__(name)
         self.interface = interface
+        self.t = None
 
     def __setup__(self, screen):
 
