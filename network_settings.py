@@ -114,6 +114,7 @@ class NetworkSettings(Canvas):
                 self.label.set_text('mac_addr',info[17][0]['addr'])
 
         except:
+            print "Error, clearning values"
             self.label.set_text('ip_addr','')
             self.label.set_text('mac_addr','Interface Error')
 
