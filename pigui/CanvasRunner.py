@@ -57,7 +57,7 @@ class CanvasRunner(object):
 
         old_canvas = self.canvas_stack.pop()
         print "Going back to an old canvas, poping %s" % (old_canvas)
-        old_canvas.__on_exit__()
+        self.canvas[old_canvas].__on_exit__()
         self.current_canvas = old_canvas
         self.__render__()
 
