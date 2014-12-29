@@ -82,7 +82,7 @@ class NetworkSettings(Canvas):
 
 
     def refresh_worker(self,seconds):
-        time_to_sleep = seconds/.5
+        time_to_sleep = seconds*2
 
         for i in range(0,time_to_sleep):
             self.get_information()
