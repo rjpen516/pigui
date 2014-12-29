@@ -69,13 +69,16 @@ class NetworkSettings(Canvas):
 
 
         self.get_information()
+        self.refresh_status()
 
-    def refresh_status(self,seconds):
+        
+
+    def refresh_status(self):
 
         if self.t != None:
             return
 
-        self.t = Process(target=self.refresh_worker,args=(seconds,))
+        self.t = Process(target=self.refresh_worker)
         self.t.start()
 
 
@@ -93,7 +96,7 @@ class NetworkSettings(Canvas):
 
     def dhcp_release(self):
 
-        self.refresh_status()
+
 
 
     def get_information(self):
